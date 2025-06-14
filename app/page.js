@@ -16,7 +16,7 @@ const HomePage = () => {
 
   return (
     <div className="bg-gray-50 text-gray-800">
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Hero Section */}
       <header
@@ -29,7 +29,7 @@ const HomePage = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://placehold.co/1920x1080/f0e2e6/7c3aed?text=Our+Wedding+Day')",
+              "url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070')",
           }}
         ></div>
         <div className="absolute inset-0 bg-black opacity-30"></div>
@@ -38,13 +38,14 @@ const HomePage = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             style={{ fontFamily: "'Lora', serif', serif'" }}
           >
-            Jessica & Andrew
+            Σοφόκλης & Κατερίνα
           </h1>
+          <Countdown />
+
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto italic">
             Once in a while, right in the middle of an ordinary life, love gives
             us a fairy tale.
           </p>
-          <Countdown />
         </div>
       </header>
 
@@ -60,16 +61,16 @@ const HomePage = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm">
-                <Clock className="w-12 h-12 text-rose-500 mb-4" />
+                <Clock className="w-12 h-12 text-yellow-500 mb-4" />
                 <h3 className="text-2xl font-semibold mb-2">When</h3>
-                <p>Saturday, September 20, 2025</p>
-                <p>5:00 PM - 11:00 PM</p>
+                <p>Saturday, November 08, 2025</p>
+                <p>13:00 - Wasted!!</p>
               </div>
               <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm">
-                <MapPin className="w-12 h-12 text-rose-500 mb-4" />
+                <MapPin className="w-12 h-12 text-yellow-500 mb-4" />
                 <h3 className="text-2xl font-semibold mb-2">Where</h3>
-                <p className="font-semibold">The Grand Vineyard Estate</p>
-                <p>123 Vineyard Lane, Napa Valley, CA 94558</p>
+                <p className="font-semibold">Aliathon Resort</p>
+                <p>3 Poseidonos Avenue, Yeroskipou 8204, Cyprus</p>
               </div>
             </div>
             <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">

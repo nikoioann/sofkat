@@ -97,7 +97,7 @@ const RSVPForm = () => {
             required
             className={`w-full px-4 py-3 border ${
               errors.name ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-rose-500 focus:border-rose-500`}
+            } rounded-lg focus:ring-yellow-500 focus:border-yellow-500`}
             value={formData.name}
             onChange={handleChange}
           />
@@ -119,7 +119,7 @@ const RSVPForm = () => {
             required
             className={`w-full px-4 py-3 border ${
               errors.email ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-rose-500 focus:border-rose-500`}
+            } rounded-lg focus:ring-yellow-500 focus:border-yellow-500`}
             value={formData.email}
             onChange={handleChange}
           />
@@ -141,7 +141,7 @@ const RSVPForm = () => {
             required
             className={`w-full px-4 py-3 border ${
               errors.phone ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-rose-500 focus:border-rose-500`}
+            } rounded-lg focus:ring-yellow-500 focus:border-yellow-500`}
             value={formData.phone}
             onChange={handleChange}
           />
@@ -159,7 +159,7 @@ const RSVPForm = () => {
           <select
             name="guests"
             id="guests"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-rose-500 focus:border-rose-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"
             value={formData.guests}
             onChange={handleChange}
           >
@@ -180,7 +180,7 @@ const RSVPForm = () => {
         <select
           name="dietary"
           id="dietary"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-rose-500 focus:border-rose-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"
           value={formData.dietary}
           onChange={handleChange}
         >
@@ -202,7 +202,7 @@ const RSVPForm = () => {
           name="notes"
           id="notes"
           rows="4"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-rose-500 focus:border-rose-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"
           value={formData.notes}
           onChange={handleChange}
         ></textarea>
@@ -210,7 +210,7 @@ const RSVPForm = () => {
       <div className="text-center">
         <button
           type="submit"
-          className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-rose-600 hover:bg-rose-700 transition duration-300 transform hover:scale-105 shadow-lg"
+          className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300 transform hover:scale-105 shadow-lg"
         >
           <Send className="w-5 h-5 mr-2" />
           Submit RSVP
