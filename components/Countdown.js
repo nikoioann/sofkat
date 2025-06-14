@@ -35,7 +35,7 @@ const Countdown = () => {
       timerComponents.push(
         <div key="finished" className="text-center p-4">
           <div className="text-4xl md:text-6xl font-bold text-gray-800">
-            It's Wedding Day!
+            It&apos;s Wedding Day!
           </div>
         </div>
       );

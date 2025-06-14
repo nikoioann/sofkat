@@ -41,8 +41,8 @@ const HomePage = () => {
             Jessica & Andrew
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto italic">
-            "Once in a while, right in the middle of an ordinary life, love
-            gives us a fairy tale."
+            Once in a while, right in the middle of an ordinary life, love gives
+            us a fairy tale.
           </p>
           <Countdown />
         </div>

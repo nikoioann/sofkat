@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { LucideImage } from "lucide-react";
+import Image from "next/image";
 
 const PhotoGallery = ({ photos }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
@@ -28,7 +30,7 @@ const PhotoGallery = ({ photos }) => {
               className="break-inside-avoid"
               onClick={() => setLightboxImage(photo)}
             >
-              <img
+              <Image
                 src={photo}
                 alt={`Shared memory ${index + 1}`}
                 className="w-full h-auto object-cover rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
@@ -44,7 +46,7 @@ const PhotoGallery = ({ photos }) => {
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
           onClick={() => setLightboxImage(null)}
         >
-          <img
+          <Image
             src={lightboxImage}
             alt="Lightbox view"
             className="max-w-full max-h-full rounded-lg"

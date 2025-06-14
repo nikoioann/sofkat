@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { Camera, X } from "lucide-react";
+import Image from "next/image";
 
 const PhotoUploader = ({ onUploadSuccess }) => {
   const [files, setFiles] = useState([]);
@@ -83,7 +85,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       key={file.name}
       className="relative border border-gray-200 rounded-lg p-2"
     >
-      <img
+      <Image
         src={file.preview}
         alt={file.name}
         className="w-full h-32 object-cover rounded-md"
@@ -121,7 +123,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
           {isDragActive ? (
             <p>Drop the files here ...</p>
           ) : (
-            <p>Drag 'n' drop photos here, or click to select files</p>
+            <p>Drag &apos;n&apos; drop photos here, or click to select files</p>
           )}
           <p className="text-xs text-gray-400 mt-2">
             .jpg, .png, .heic accepted | Max 10MB per image
