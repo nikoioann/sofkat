@@ -1,103 +1,111 @@
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect } from "react";
 
-export default function Home() {
+import Countdown from "@/components/Countdown";
+import RSVPForm from "@/components/RSVPForm";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+import { Clock, MapPin, Send } from "lucide-react";
+
+const HomePage = () => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="bg-gray-50 text-gray-800">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Hero Section */}
+      <header
+        id="home"
+        className={`relative min-h-screen flex flex-col items-center justify-center text-white text-center p-4 transition-opacity duration-1000 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://placehold.co/1920x1080/f0e2e6/7c3aed?text=Our+Wedding+Day')",
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <div className="relative z-10">
+          <h1
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            style={{ fontFamily: "'Lora', serif', serif'" }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Jessica & Andrew
+          </h1>
+          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto italic">
+            "Once in a while, right in the middle of an ordinary life, love
+            gives us a fairy tale."
+          </p>
+          <Countdown />
         </div>
+      </header>
+
+      <main>
+        {/* Event Information Panel */}
+        <section id="events" className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2
+              className="text-4xl font-bold text-gray-800 mb-12"
+              style={{ fontFamily: "'Lora', serif'" }}
+            >
+              Event Details
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm">
+                <Clock className="w-12 h-12 text-rose-500 mb-4" />
+                <h3 className="text-2xl font-semibold mb-2">When</h3>
+                <p>Saturday, September 20, 2025</p>
+                <p>5:00 PM - 11:00 PM</p>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm">
+                <MapPin className="w-12 h-12 text-rose-500 mb-4" />
+                <h3 className="text-2xl font-semibold mb-2">Where</h3>
+                <p className="font-semibold">The Grand Vineyard Estate</p>
+                <p>123 Vineyard Lane, Napa Valley, CA 94558</p>
+              </div>
+            </div>
+            <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
+              <h3 className="text-2xl font-semibold mb-4 text-center">
+                More Information
+              </h3>
+              <p className="text-center text-gray-600">
+                <strong>Dress Code:</strong> Formal Attire. <br />{" "}
+                <strong>Transportation:</strong> Shuttle service will be
+                available from the downtown hotel. On-site parking is limited.{" "}
+                <br />
+                <strong>Special Note:</strong> While we love your little ones,
+                this is an adults-only celebration.
+              </p>
+              <div className="mt-6 h-64 bg-gray-300 rounded-lg flex items-center justify-center text-gray-500">
+                Interactive Map Placeholder
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* RSVP Section */}
+        <section
+          id="rsvp"
+          className="py-20"
+          style={{ backgroundColor: "#fdf8f5" }}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <RSVPForm />
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
-}
+};
+
+export default HomePage;
