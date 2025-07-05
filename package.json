@@ -12,8 +12,10 @@
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.7",
     "lucide-react": "^0.515.0",
     "next": "15.3.3",
+    "primereact": "^10.9.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

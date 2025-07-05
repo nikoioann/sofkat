@@ -5,7 +5,7 @@ import Countdown from "@/components/Countdown";
 import RSVPForm from "@/components/RSVPForm";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import GoogleMapComponent from "@/components/GoogleMap";
 import { Clock, MapPin, Send } from "lucide-react";
 
 const HomePage = () => {
@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     setLoaded(true);
   }, []);
-
+  
   return (
     <div className="bg-gray-50 text-gray-800">
       {/* <Navbar /> */}
@@ -85,9 +85,9 @@ const HomePage = () => {
                 <strong>Special Note:</strong> While we love your little ones,
                 this is an adults-only celebration.
               </p>
-              <div className="mt-6 h-64 bg-gray-300 rounded-lg flex items-center justify-center text-gray-500">
-                Interactive Map Placeholder
-              </div>
+            </div>
+            <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
+                <GoogleMapComponent />
             </div>
           </div>
         </section>
