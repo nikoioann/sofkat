@@ -3,6 +3,13 @@ import React, { useState, useEffect } from "react";
 
 const Countdown = () => {
   const WEDDING_DATE = new Date("2025-11-08T13:00:00");
+  const [mounted, setMounted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   const calculateTimeLeft = () => {
     const difference = +WEDDING_DATE - +new Date();
@@ -19,14 +26,29 @@ const Countdown = () => {
     return timeLeft;
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
   useEffect(() => {
-    const timer = setTimeout(() => {
+    setMounted(true);
+    setTimeLeft(calculateTimeLeft());
+    
+    const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-    return () => clearTimeout(timer);
-  });
+    
+    return () => clearInterval(timer);
+  }, []);
+
+  // Don't render anything until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="flex justify-center items-center space-x-2 md:space-x-6 bg-white bg-opacity-70 rounded-lg p-4 mt-8 backdrop-blur-sm">
+        <div className="text-center p-4">
+          <div className="text-4xl md:text-5xl font-bold text-gray-700">
+            Loading...
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const timerComponents = [];
 
