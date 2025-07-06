@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Send } from "lucide-react";
+
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,6 +10,8 @@ const RSVPForm = () => {
   });
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({});
+
+  const googleScriptURL = "https://script.google.com/macros/s/AKfycbwaP8PmpkhhrEboyX4ssfZFPOuP1Umtc2SK7kI5VkMe145um3KjvKEsMr2UE1r3-DDU/exec";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,37 +33,30 @@ const RSVPForm = () => {
       setStatus("Please fix the errors above.");
       return;
     }
-    console.log(formData);
     setStatus("Sending...");
+    
     try {
-      const response = await fetch(
-        "https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT",
-        {
-          // <-- REPLACE THIS
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      const res = await fetch(googleScriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain"
+        },
+        body: JSON.stringify({
+          fullName: formData.name,
+          phone: formData.phone,
+          numSpots: formData.guests,
+        })
+      });
 
-      if (response.ok) {
-        setStatus("Thank you!");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          guests: 1,
-          dietary: "none",
-          notes: "",
-        });
-      } else {
-        const data = await response.json();
-        setStatus(
-          data.error || "Oops! There was a problem submitting your form."
-        );
+      if (!res.ok) {
+        throw new Error("Failed to add registration to google spreadsheet");
       }
+
+      setStatus("Success! You have been successfully registered for our Pottery Workshop!");
+      // Clear form on success
+      setFormData({ name: "", phone: "", guests: 1 });
     } catch (error) {
-      setStatus("An error occurred. Please try again.");
+      setStatus("Ooops! There was a problem with your registration!");
     }
   };
 
