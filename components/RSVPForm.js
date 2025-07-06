@@ -11,7 +11,7 @@ const RSVPForm = () => {
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({});
 
-  const googleScriptURL = "https://script.google.com/macros/s/AKfycbwaP8PmpkhhrEboyX4ssfZFPOuP1Umtc2SK7kI5VkMe145um3KjvKEsMr2UE1r3-DDU/exec";
+  const googleScriptURL = "https://script.google.com/macros/s/AKfycbyFSAwgpUSxf-0aGSz6R7fFsFaSjrN4akDmY6r1hQ0Z6mpbItFc_VV0AkcCORcpmRo/exec";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
