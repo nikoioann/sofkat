@@ -52,11 +52,11 @@ const RSVPForm = () => {
         throw new Error("Failed to add registration to google spreadsheet");
       }
 
-      setStatus("Success! You have been successfully registered for our Pottery Workshop!");
+      setStatus("Success!");
       // Clear form on success
       setFormData({ name: "", phone: "", guests: 1 });
     } catch (error) {
-      setStatus("Ooops! There was a problem with your registration!");
+      setStatus("Ooops! There was a problem with your submission!");
     }
   };
 
