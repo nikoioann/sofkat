@@ -4,11 +4,8 @@ import { Send } from "lucide-react";
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
     guests: 1,
-    dietary: "none",
-    notes: "",
   });
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({});
@@ -21,11 +18,6 @@ const RSVPForm = () => {
   const validateForm = () => {
     let tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = "Full name is required.";
-    if (!formData.email.trim()) {
-      tempErrors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      tempErrors.email = "Email is invalid.";
-    }
     if (!formData.phone.trim()) tempErrors.phone = "Phone number is required.";
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
@@ -51,7 +43,7 @@ const RSVPForm = () => {
       );
 
       if (response.ok) {
-        setStatus("Thank you for your RSVP!");
+        setStatus("Thank you!");
         setFormData({
           name: "",
           email: "",
@@ -74,13 +66,13 @@ const RSVPForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6 max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl"
+      className="space-y-10 max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl"
     >
       <h2
         className="text-4xl font-bold text-gray-800 text-center mb-8"
         style={{ fontFamily: "'Lora', serif" }}
       >
-        RSVP
+        Will you be attending?
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -103,28 +95,6 @@ const RSVPForm = () => {
           />
           {errors.name && (
             <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-          )}
-        </div>
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Email Address
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            className={`w-full px-4 py-3 border ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-yellow-500 focus:border-yellow-500`}
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
           )}
         </div>
         <div>
@@ -169,43 +139,6 @@ const RSVPForm = () => {
             <option>4</option>
           </select>
         </div>
-      </div>
-      <div className="col-span-1 md:col-span-2">
-        <label
-          htmlFor="dietary"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Dietary Restrictions
-        </label>
-        <select
-          name="dietary"
-          id="dietary"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"
-          value={formData.dietary}
-          onChange={handleChange}
-        >
-          <option value="none">None</option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="gluten-free">Gluten-Free</option>
-          <option value="other">Other (please specify in notes)</option>
-        </select>
-      </div>
-      <div>
-        <label
-          htmlFor="notes"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Additional Notes
-        </label>
-        <textarea
-          name="notes"
-          id="notes"
-          rows="4"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500"
-          value={formData.notes}
-          onChange={handleChange}
-        ></textarea>
       </div>
       <div className="text-center">
         <button
