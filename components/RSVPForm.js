@@ -6,6 +6,14 @@ const RSVPForm = () => {
     name: "",
     phone: "",
     guests: 1,
+    date: new Date().toLocaleString('en-GB', {
+      day: '2-digit',
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).replace(',', ''),
   });
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({});
@@ -19,6 +27,7 @@ const RSVPForm = () => {
     let tempErrors = {};
     if (!formData.name.trim()) tempErrors.name = "Full name is required.";
     if (!formData.phone.trim()) tempErrors.phone = "Phone number is required.";
+
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
@@ -29,7 +38,7 @@ const RSVPForm = () => {
       setStatus("Please fix the errors above.");
       return;
     }
-
+    console.log(formData);
     setStatus("Sending...");
     try {
       const response = await fetch(
@@ -66,7 +75,7 @@ const RSVPForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-10 max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl"
+      className="space-y-10 max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl"
     >
       <h2
         className="text-4xl font-bold text-gray-800 text-center mb-8"
@@ -74,8 +83,8 @@ const RSVPForm = () => {
       >
         Will you be attending?
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="md:col-span-5">
           <label
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 mb-1"
@@ -97,7 +106,7 @@ const RSVPForm = () => {
             <p className="text-red-500 text-xs mt-1">{errors.name}</p>
           )}
         </div>
-        <div>
+        <div className="md:col-span-4">
           <label
             htmlFor="phone"
             className="block text-sm font-medium text-gray-700 mb-1"
@@ -119,12 +128,12 @@ const RSVPForm = () => {
             <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
           )}
         </div>
-        <div>
+        <div className="md:col-span-3">
           <label
             htmlFor="guests"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Number of Guests
+           Guests
           </label>
           <select
             name="guests"
@@ -146,7 +155,7 @@ const RSVPForm = () => {
           className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300 transform hover:scale-105 shadow-lg"
         >
           <Send className="w-5 h-5 mr-2" />
-          Submit RSVP
+          See you there!
         </button>
       </div>
       {status && <p className="text-center mt-4 text-gray-600">{status}</p>}
