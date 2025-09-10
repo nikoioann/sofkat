@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  sofkat:
+    build:
+      context: .
+    env_file:
+      - ./.env
+    container_name: sofkat
+    networks:
+      - proxy_sofkat
+
+networks:
+  proxy_sofkat:
+    external: true
+    name: prod_sofkat
