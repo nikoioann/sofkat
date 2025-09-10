@@ -82,7 +82,7 @@ const HomePage = () => {
               </p>
             </div> */}
             <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
-              {/* <GoogleMapComponent /> */}
+              <GoogleMapComponent />
             </div>
           </div>
         </section>
