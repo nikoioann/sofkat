@@ -13,12 +13,11 @@ const HomePage = () => {
   useEffect(() => {
     setLoaded(true);
   }, []);
-  
+
   return (
     <div className="bg-gray-50 text-gray-800">
       {/* <Navbar /> */}
 
-      {/* Hero Section */}
       <header
         id="home"
         className={`relative min-h-screen flex flex-col items-center justify-center text-white text-center p-4 transition-opacity duration-1000 ${
@@ -28,24 +27,20 @@ const HomePage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070')",
+            backgroundImage: "url('/sk.png')",
           }}
         ></div>
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative z-10">
+        <div className="relative z-10 flex flex-col items-center h-full justify-start pt-[70vh]">
           <h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             style={{ fontFamily: "'Lora', serif', serif'" }}
           >
-            Σοφόκλης & Κατερίνα
+            Σοφοκλής & Κατερίνα
           </h1>
-          <Countdown />
-
-          <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto italic">
-            Once in a while, right in the middle of an ordinary life, love gives
-            us a fairy tale.
-          </p>
+          <div>
+            <Countdown />
+          </div>
         </div>
       </header>
 
@@ -73,7 +68,7 @@ const HomePage = () => {
                 <p>3 Poseidonos Avenue, Yeroskipou 8204, Cyprus</p>
               </div>
             </div>
-            <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
+            {/* <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
               <h3 className="text-2xl font-semibold mb-4 text-center">
                 More Information
               </h3>
@@ -85,9 +80,9 @@ const HomePage = () => {
                 <strong>Special Note:</strong> While we love your little ones,
                 this is an adults-only celebration.
               </p>
-            </div>
+            </div> */}
             <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
-                <GoogleMapComponent />
+              {/* <GoogleMapComponent /> */}
             </div>
           </div>
         </section>

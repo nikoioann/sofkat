@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 const Countdown = () => {
-  const WEDDING_DATE = new Date("2025-11-08T13:00:00");
+  const WEDDING_DATE = new Date("2025-11-08T16:30:00");
   const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -29,11 +29,11 @@ const Countdown = () => {
   useEffect(() => {
     setMounted(true);
     setTimeLeft(calculateTimeLeft());
-    
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-    
+
     return () => clearInterval(timer);
   }, []);
 
@@ -77,7 +77,7 @@ const Countdown = () => {
   });
 
   return (
-    <div className="flex justify-center items-center space-x-2 md:space-x-6 bg-white bg-opacity-70 rounded-lg p-4 mt-8 backdrop-blur-sm">
+    <div className="flex justify-center items-center w-200 space-x-2 md:space-x-6 bg-white bg-opacity-70 rounded-lg p-4 mt-8 backdrop-blur-sm">
       {timerComponents.length ? (
         timerComponents
       ) : (

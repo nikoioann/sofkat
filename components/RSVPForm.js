@@ -11,7 +11,8 @@ const RSVPForm = () => {
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({});
 
-  const googleScriptURL = "https://script.google.com/macros/s/AKfycbyFSAwgpUSxf-0aGSz6R7fFsFaSjrN4akDmY6r1hQ0Z6mpbItFc_VV0AkcCORcpmRo/exec";
+  const googleScriptURL =
+    "https://script.google.com/macros/s/AKfycbyFSAwgpUSxf-0aGSz6R7fFsFaSjrN4akDmY6r1hQ0Z6mpbItFc_VV0AkcCORcpmRo/exec";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,18 +35,18 @@ const RSVPForm = () => {
       return;
     }
     setStatus("Sending...");
-    
+
     try {
       const res = await fetch(googleScriptURL, {
         method: "POST",
         headers: {
-          "Content-Type": "text/plain"
+          "Content-Type": "text/plain",
         },
         body: JSON.stringify({
           fullName: formData.name,
           phone: formData.phone,
           numSpots: formData.guests,
-        })
+        }),
       });
 
       if (!res.ok) {
@@ -121,7 +122,7 @@ const RSVPForm = () => {
             htmlFor="guests"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-           Guests
+            Guests
           </label>
           <select
             name="guests"
@@ -134,6 +135,7 @@ const RSVPForm = () => {
             <option>2</option>
             <option>3</option>
             <option>4</option>
+            <option>5</option>
           </select>
         </div>
       </div>
