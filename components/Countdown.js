@@ -77,7 +77,7 @@ const Countdown = () => {
   });
 
   return (
-    <div className="flex justify-center items-center w-200 space-x-2 md:space-x-6 bg-white bg-opacity-70 rounded-lg p-4 mt-8 backdrop-blur-sm">
+    <div className="flex justify-center items-center w-fit space-x-2 md:space-x-6 bg-white bg-opacity-70 rounded-lg p-4 mt-8 backdrop-blur-sm">
       {timerComponents.length ? (
         timerComponents
       ) : (

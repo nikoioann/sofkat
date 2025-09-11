@@ -47,43 +47,107 @@ const HomePage = () => {
       <main>
         {/* Event Information Panel */}
         <section id="events" className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            {/* <h2
               className="text-4xl font-bold text-gray-800 mb-12"
               style={{ fontFamily: "'Lora', serif'" }}
             >
-              Event Details
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm">
-                <Clock className="w-12 h-12 text-yellow-500 mb-4" />
-                <h3 className="text-2xl font-semibold mb-2">When</h3>
-                <p>Saturday, November 08, 2025</p>
-                <p>13:00 - Wasted!!</p>
-              </div>
-              <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg shadow-sm">
-                <MapPin className="w-12 h-12 text-yellow-500 mb-4" />
-                <h3 className="text-2xl font-semibold mb-2">Where</h3>
-                <p className="font-semibold">Aliathon Resort</p>
-                <p>3 Poseidonos Avenue, Yeroskipou 8204, Cyprus</p>
-              </div>
+              Wedding Agenda
+            </h2> */}
+            <div className="max-w-6xl mx-auto px-4">
+              <table className="w-full table-auto border-separate border-spacing-y-12">
+                <tbody>
+                  <tr>
+                    <td className="w-1/3 align-middle text-center h-72">
+                      {" "}
+                      <img
+                        src="/suit.png"
+                        alt="Location 1"
+                        className="rounded-lg w-full h-64 object-contain mx-auto" // object-contain ensures full image is visible
+                      />
+                    </td>
+                    <td className="align-middle text-center h-72 text-lg">
+                      <div className="mb-2 font-semibold">Αλλάματα γαμπρού</div>
+                      <div className="mb-2 text-gray-600">13:00</div>
+                      <a
+                        href="https://www.google.com/maps?saddr=My+Location&daddr=34.80609744262925,32.46040753160642"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        Διαδρομή
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="w-1/3 align-middle text-center h-72">
+                      <img
+                        src="/bribe.png"
+                        alt="Location 2"
+                        className="rounded-lg w-full h-64 object-contain mx-auto"
+                      />
+                    </td>
+                    <td className="align-middle text-center h-72 text-lg">
+                      <div className="mb-2 font-semibold">Στολίσματα νύφης</div>
+                      <div className="mb-2 text-gray-600">15:00</div>
+                      <a
+                        href="https://www.google.com/maps?saddr=My+Location&daddr=34.7451594299861,32.435311586797184"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        Διαδρομή
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="w-1/3 align-middle text-center h-72">
+                      <img
+                        src="/church.png"
+                        alt="Location 3"
+                        className="rounded-lg w-full h-64 object-contain mx-auto"
+                      />
+                    </td>
+                    <td className="align-middle text-center h-72 text-lg">
+                      <div className="mb-2 font-semibold">Εκκλησία</div>
+                      <div className="mb-2 text-gray-600">17:15</div>
+                      <a
+                        href="https://www.google.com/maps?saddr=My+Location&daddr=34.772853601394964,32.42051199309124"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        Διαδρομή
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="w-1/3 align-middle text-center h-72">
+                      <img
+                        src="/food.png"
+                        alt="Location 4"
+                        className="rounded-lg w-full h-64 object-contain mx-auto"
+                      />
+                    </td>
+                    <td className="align-middle text-center h-72 text-lg">
+                      <div className="mb-2 font-semibold">Δείπνο</div>
+                      <div className="mb-2 text-gray-600">20:00 </div>
+                      <a
+                        href="https://www.google.com/maps?saddr=My+Location&daddr=Aliathon+Resort,+Paphos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        Διαδρομή
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            {/* <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
-              <h3 className="text-2xl font-semibold mb-4 text-center">
-                More Information
-              </h3>
-              <p className="text-center text-gray-600">
-                <strong>Dress Code:</strong> Formal Attire. <br />{" "}
-                <strong>Transportation:</strong> Shuttle service will be
-                available from the downtown hotel. On-site parking is limited.{" "}
-                <br />
-                <strong>Special Note:</strong> While we love your little ones,
-                this is an adults-only celebration.
-              </p>
-            </div> */}
-            <div className="mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
-              <GoogleMapComponent />
-            </div>
+          </div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
+            <GoogleMapComponent />
           </div>
         </section>
 
