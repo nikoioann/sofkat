@@ -25,13 +25,14 @@ const HomePage = () => {
         }`}
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/sk.png')",
+            backgroundImage: "url('/sk2.jpg')",
+            position: "absolute",
           }}
         ></div>
-        <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative z-10 flex flex-col items-center h-full justify-start pt-[70vh]">
+        {/* <div className="absolute inset-0 bg-black opacity-30"></div> */}
+        <div className="relative z-10 flex flex-col items-center h-full justify-start pt-[40vh]">
           <h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             style={{ fontFamily: "'Lora', serif', serif'" }}

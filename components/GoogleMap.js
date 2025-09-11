@@ -15,7 +15,7 @@ const RawGoogleMap = () => {
     lng: 32.42073353361605,
     label: "Church",
   };
-  const hotel = { lat: 34.74436, lng: 32.43494 };
+  const hotel = { lat: 34.74317847528728, lng: 32.432152408937036 };
   const sofos = { lat: 34.806087790732654, lng: 32.460204985843234 };
   const katerina = { lat: 34.7451594299861, lng: 32.435311586797184 };
 
@@ -74,7 +74,7 @@ const RawGoogleMap = () => {
               title: "Hotel",
               icon: {
                 url: "/food.png",
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(40, 40),
               },
             });
             markerInstanceRef.current.addListener("click", () => {
@@ -91,12 +91,12 @@ const RawGoogleMap = () => {
               title: "Church",
               icon: {
                 url: "/church.png",
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(40, 40),
               },
             });
             secondMarker.addListener("click", () => {
               window.open(
-                "https://www.google.com/maps?saddr=My+Location&daddr=34.772853601394964,32.42051199309124",
+                "https://www.google.com/maps?saddr=My+Location&daddr=34.7451594299861,32.435311586797184",
                 "_blank"
               );
             });
@@ -108,7 +108,7 @@ const RawGoogleMap = () => {
               title: "Sofos",
               icon: {
                 url: "/suit.png",
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(40, 40),
               },
             });
             thirdMarker.addListener("click", () => {
@@ -125,7 +125,7 @@ const RawGoogleMap = () => {
               title: "Katerina",
               icon: {
                 url: "/bribe.png",
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(40, 40),
               },
             });
             fourthMarker.addListener("click", () => {
