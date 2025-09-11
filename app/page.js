@@ -31,7 +31,7 @@ const HomePage = () => {
             position: "absolute",
           }}
         ></div>
-        {/* <div className="absolute inset-0 bg-black opacity-30"></div> */}
+        <div className="absolute inset-0 bg-black opacity-15"></div>
         <div className="relative z-10 flex flex-col items-center h-full justify-start pt-[40vh]">
           <h1
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
