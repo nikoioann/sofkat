@@ -27,7 +27,7 @@ const HomePage = () => {
         <div
           className="absolute inset-0 bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/sk2.jpg')",
+            backgroundImage: "url('/sk3.jpg')",
             position: "absolute",
           }}
         ></div>

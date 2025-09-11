@@ -67,10 +67,10 @@ const RSVPForm = () => {
       className="space-y-10 max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-2xl"
     >
       <h2
-        className="text-4xl font-bold text-gray-800 text-center mb-8"
+        className="text-3xl font-bold text-gray-800 text-center mb-8"
         style={{ fontFamily: "'Lora', serif" }}
       >
-        Will you be attending?
+        Παρακαλώ απαντήστε μέχρι 20/10/2025
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-5">
@@ -78,7 +78,7 @@ const RSVPForm = () => {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Full Name
+            Όνομα
           </label>
           <input
             type="text"
@@ -100,7 +100,7 @@ const RSVPForm = () => {
             htmlFor="phone"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Phone Number
+            Τηλέφωνο
           </label>
           <input
             type="tel"
@@ -122,7 +122,7 @@ const RSVPForm = () => {
             htmlFor="guests"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Guests
+            Άτομα
           </label>
           <select
             name="guests"
@@ -144,8 +144,8 @@ const RSVPForm = () => {
           type="submit"
           className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300 transform hover:scale-105 shadow-lg"
         >
-          <Send className="w-5 h-5 mr-2" />
-          See you there!
+          <Send className="w-7 h-7 mr-2" />
+          <span style={{ fontSize: "20px" }}>Θα χαρούμε να σας δούμε!</span>
         </button>
       </div>
       {status && <p className="text-center mt-4 text-gray-600">{status}</p>}
