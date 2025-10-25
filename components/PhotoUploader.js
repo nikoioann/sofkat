@@ -34,11 +34,9 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       "image/png": [".png"],
       "image/heic": [".heic"],
     },
-    maxSize: 10 * 1024 * 1024, // 10MB
+    maxSize: 100 * 1024 * 1024,
     onDropRejected: (fileRejections) => {
-      setError(
-        `File rejected: ${fileRejections[0].errors[0].message}. Please use JPG, PNG, or HEIC files under 10MB.`
-      );
+      setError(`File rejected: ${fileRejections[0].errors[0].message}. `);
     },
   });
 
@@ -139,6 +137,15 @@ const PhotoUploader = ({ onUploadSuccess }) => {
     <>
       <LoaderOverlay />
       <div className="w-full max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-2xl">
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={120}
+            height={120}
+            className="object-contain"
+          />
+        </div>
         <h2
           className="text-3xl font-bold text-gray-800 text-center mb-6"
           style={{ fontFamily: "'Lora', serif" }}
@@ -163,9 +170,6 @@ const PhotoUploader = ({ onUploadSuccess }) => {
                 Drag &apos;n&apos; drop photos here, or click to select files
               </p>
             )}
-            <p className="text-xs text-gray-400 mt-2">
-              .jpg, .png, .heic accepted | Max 10MB per image
-            </p>
           </div>
         </div>
 
