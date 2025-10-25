@@ -150,7 +150,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
           className="text-3xl font-bold text-gray-800 text-center mb-6"
           style={{ fontFamily: "'Lora', serif" }}
         >
-          Share Your Photos
+          Upload Your Photos
         </h2>
         <div
           {...getRootProps()}
