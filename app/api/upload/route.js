@@ -18,10 +18,9 @@ export async function POST(request) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
 
-    // Validate file size (10MB max)
-    const maxSize = 10 * 1024 * 1024; // 10MB
+    const maxSize = 50 * 1024 * 1024; // 50MB
     if (file.size > maxSize) {
-      return NextResponse.json({ error: "File too large" }, { status: 400 });
+      return NextResponse.json({ error: "File too large" }, { status: 413 });
     }
 
     // Create uploads directory if it doesn't exist

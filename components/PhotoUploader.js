@@ -68,8 +68,19 @@ const PhotoUploader = ({ onUploadSuccess }) => {
         );
         setError(null); // Clear any previous errors
       }
-      if (results.some((res) => res.error)) {
-        setError("Some images failed to upload. Please try them again.");
+
+      // Check for specific errors
+      const failedUploads = results.filter((res) => res.error);
+      if (failedUploads.length > 0) {
+        const fileTooLargeErrors = failedUploads.filter(
+          (res) => res.error === "File too large"
+        );
+
+        if (fileTooLargeErrors.length > 0) {
+          setError(`Παρακαλώ ανεβάστε φωτογραφίες μέχρι 50MB.`);
+        } else {
+          setError("Οι φωτογραφίες δεν ανεβάστηκαν. Παρακαλώ δοκιμάστε ξανά.");
+        }
       }
     } catch (err) {
       console.error(err);

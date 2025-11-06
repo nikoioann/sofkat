@@ -9,6 +9,8 @@ services:
     container_name: sofkat
     networks:
       - proxy_sofkat
+    volumes:
+      - ./public/uploads:/app/public/uploads
 
 networks:
   proxy_sofkat:
