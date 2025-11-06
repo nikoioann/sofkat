@@ -3,6 +3,17 @@ import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
 
+// Configure the route to handle larger file uploads
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "50mb",
+    },
+  },
+  // Increase max duration for large file uploads
+  maxDuration: 60,
+};
+
 export async function POST(request) {
   try {
     const data = await request.formData();

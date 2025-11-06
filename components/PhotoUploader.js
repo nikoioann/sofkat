@@ -15,7 +15,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       .filter(
         (file) =>
           ["image/jpeg", "image/png", "image/heic"].includes(file.type) &&
-          file.size <= 100 * 1024 * 1024
+          file.size <= 50 * 1024 * 1024 // Changed from 100MB to 50MB
       )
       .map((file) =>
         Object.assign(file, {
@@ -24,7 +24,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       );
     setFiles((prev) => [...prev, ...validFiles]);
     setError(null);
-    setSuccessMessage(null); // Clear success message when new files are selected
+    setSuccessMessage(null);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -34,7 +34,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       "image/png": [".png"],
       "image/heic": [".heic"],
     },
-    maxSize: 100 * 1024 * 1024,
+    maxSize: 50 * 1024 * 1024, // Changed from 100MB to 50MB
     onDropRejected: (fileRejections) => {
       setError(`File rejected: ${fileRejections[0].errors[0].message}. `);
     },
