@@ -6,6 +6,12 @@ const nextConfig = {
   },
   basePath: "",
   assetPrefix: "",
+  // Add this for API routes
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "100mb",
+    },
+  },
 };
 
 export default nextConfig;
