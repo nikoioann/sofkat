@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
 import { readdir } from "fs/promises";
 import { join } from "path";
+import { unstable_cache } from "next/cache";
 
-export async function GET() {
-  try {
+// Route segment config for caching optimization
+export const revalidate = 60; // Revalidate every 60 seconds
+
+// Cache the directory read for 60 seconds to handle high traffic
+// This prevents filesystem reads on every request
+const getCachedPhotos = unstable_cache(
+  async () => {
     const uploadsDir = join(process.cwd(), "public", "uploads");
 
     // Read all files from the uploads directory
@@ -19,9 +25,27 @@ export async function GET() {
     // Create URLs for each image
     const photos = imageFiles.map((file) => `/uploads/${file}`);
 
-    return NextResponse.json({
+    return {
       photos,
       count: photos.length,
+    };
+  },
+  ["photos-list"],
+  {
+    revalidate: 60, // Revalidate cache every 60 seconds
+    tags: ["photos"], // Tag for manual revalidation if needed
+  }
+);
+
+export async function GET() {
+  try {
+    const data = await getCachedPhotos();
+
+    // Set cache headers for the response
+    return NextResponse.json(data, {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+      },
     });
   } catch (error) {
     console.error("Error reading photos:", error);

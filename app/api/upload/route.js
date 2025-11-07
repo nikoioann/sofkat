@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
+import { revalidateTag } from "next/cache";
 
 // Configure the route to handle larger file uploads
 export const config = {
@@ -52,6 +53,9 @@ export async function POST(request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     await writeFile(filePath, buffer);
+
+    // Invalidate the photos cache so new photos appear immediately
+    revalidateTag("photos");
 
     // Return the public URL path
     const publicUrl = `/uploads/${fileName}`;
