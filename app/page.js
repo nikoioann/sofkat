@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GoogleMapComponent from "@/components/GoogleMap";
 import { Clock, MapPin, Send } from "lucide-react";
+import Link from "next/link";
 
 const HomePage = () => {
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +56,15 @@ const HomePage = () => {
             >
               Wedding Agenda
             </h2> */}
+
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
+              <Link
+                href="/upload"
+                className="inline-block px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors duration-200 text-lg font-semibold"
+              >
+                Ανεβαστε τις φωτογραφιες σας εδω
+              </Link>
+            </div>
             <div className="max-w-6xl mx-auto px-4">
               <table className="w-full table-auto border-separate border-spacing-y-12">
                 <tbody>
