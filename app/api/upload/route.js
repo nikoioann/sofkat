@@ -8,7 +8,7 @@ import { revalidateTag } from "next/cache";
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: "128mb",
+      sizeLimit: "512mb",
     },
   },
   // Increase max duration for large file uploads
@@ -39,7 +39,7 @@ export async function POST(request) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
 
-    const maxSize = 128 * 1024 * 1024; // 128MB
+    const maxSize = 512 * 1024 * 1024; // 512MB
     if (file.size > maxSize) {
       return NextResponse.json({ error: "File too large" }, { status: 413 });
     }
