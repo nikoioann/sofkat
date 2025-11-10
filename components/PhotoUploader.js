@@ -23,7 +23,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
             "video/quicktime",
             "video/x-msvideo",
             "video/webm",
-          ].includes(file.type) && file.size <= 50 * 1024 * 1024 // Changed from 100MB to 50MB
+          ].includes(file.type) && file.size <= 128 * 1024 * 1024 // 128MB limit
       )
       .map((file) =>
         Object.assign(file, {
@@ -47,9 +47,9 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       "video/x-msvideo": [".avi"],
       "video/webm": [".webm"],
     },
-    maxSize: 50 * 1024 * 1024, // Changed from 100MB to 50MB
+    maxSize: 128 * 1024 * 1024, // Changed from 100MB to 50MB
     onDropRejected: (fileRejections) => {
-      setError(`File rejected: ${fileRejections[0].errors[0].message}. `);
+      setError(`File too big. Maximum size is 128MB.`);
     },
   });
 
@@ -90,7 +90,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
         );
 
         if (fileTooLargeErrors.length > 0) {
-          setError(`Παρακαλώ ανεβάστε αρχεία μέχρι 50MB.`);
+          setError(`Παρακαλώ ανεβάστε αρχεία μέχρι 128MB.`);
         } else {
           setError("Τα αρχεία δεν ανεβάστηκαν. Παρακαλώ δοκιμάστε ξανά.");
         }

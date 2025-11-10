@@ -9,13 +9,13 @@ const nextConfig = {
   // Add this for API routes
   experimental: {
     serverActions: {
-      bodySizeLimit: "100mb",
+      bodySizeLimit: "128mb",
     },
   },
   // Add API route body size limit
   api: {
     bodyParser: {
-      sizeLimit: "50mb",
+      sizeLimit: "128mb",
     },
   },
 };
