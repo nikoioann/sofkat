@@ -14,8 +14,16 @@ const PhotoUploader = ({ onUploadSuccess }) => {
     const validFiles = acceptedFiles
       .filter(
         (file) =>
-          ["image/jpeg", "image/png", "image/heic"].includes(file.type) &&
-          file.size <= 50 * 1024 * 1024 // Changed from 100MB to 50MB
+          [
+            "image/jpeg",
+            "image/png",
+            "image/heic",
+            "video/mp4",
+            "video/mpeg",
+            "video/quicktime",
+            "video/x-msvideo",
+            "video/webm",
+          ].includes(file.type) && file.size <= 50 * 1024 * 1024 // Changed from 100MB to 50MB
       )
       .map((file) =>
         Object.assign(file, {
@@ -33,6 +41,11 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       "image/jpeg": [".jpg", ".jpeg"],
       "image/png": [".png"],
       "image/heic": [".heic"],
+      "video/mp4": [".mp4"],
+      "video/mpeg": [".mpeg"],
+      "video/quicktime": [".mov"],
+      "video/x-msvideo": [".avi"],
+      "video/webm": [".webm"],
     },
     maxSize: 50 * 1024 * 1024, // Changed from 100MB to 50MB
     onDropRejected: (fileRejections) => {
@@ -62,7 +75,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
         onUploadSuccess(successfulUploads.map((upload) => upload.url));
         setFiles([]); // Clear after successful upload
         setSuccessMessage(
-          `Successfully uploaded ${successfulUploads.length} photo${
+          `Successfully uploaded ${successfulUploads.length} file${
             successfulUploads.length === 1 ? "" : "s"
           }`
         );
@@ -77,9 +90,9 @@ const PhotoUploader = ({ onUploadSuccess }) => {
         );
 
         if (fileTooLargeErrors.length > 0) {
-          setError(`Παρακαλώ ανεβάστε φωτογραφίες μέχρι 50MB.`);
+          setError(`Παρακαλώ ανεβάστε αρχεία μέχρι 50MB.`);
         } else {
-          setError("Οι φωτογραφίες δεν ανεβάστηκαν. Παρακαλώ δοκιμάστε ξανά.");
+          setError("Τα αρχεία δεν ανεβάστηκαν. Παρακαλώ δοκιμάστε ξανά.");
         }
       }
     } catch (err) {
@@ -94,28 +107,40 @@ const PhotoUploader = ({ onUploadSuccess }) => {
     setFiles(files.filter((file) => file.name !== fileName));
   };
 
-  const previews = files.map((file) => (
-    <div
-      key={file.name}
-      className="relative border border-gray-200 rounded-lg p-2"
-    >
-      <Image
-        src={file.preview}
-        alt={file.name}
-        width={200}
-        height={128}
-        className="w-full h-32 object-cover rounded-md"
-        onLoad={() => URL.revokeObjectURL(file.preview)}
-      />
-      <button
-        onClick={() => removeFile(file.name)}
-        className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 leading-none"
+  const previews = files.map((file) => {
+    const isVideo = file.type?.startsWith("video/");
+    return (
+      <div
+        key={file.name}
+        className="relative border border-gray-200 rounded-lg p-2"
       >
-        <X size={14} />
-      </button>
-      <p className="text-xs truncate mt-1 text-gray-500">{file.name}</p>
-    </div>
-  ));
+        {isVideo ? (
+          <video
+            src={file.preview}
+            className="w-full h-32 object-cover rounded-md"
+            muted
+            playsInline
+          />
+        ) : (
+          <Image
+            src={file.preview}
+            alt={file.name}
+            width={200}
+            height={128}
+            className="w-full h-32 object-cover rounded-md"
+            onLoad={() => URL.revokeObjectURL(file.preview)}
+          />
+        )}
+        <button
+          onClick={() => removeFile(file.name)}
+          className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 leading-none"
+        >
+          <X size={14} />
+        </button>
+        <p className="text-xs truncate mt-1 text-gray-500">{file.name}</p>
+      </div>
+    );
+  });
 
   // Loader Overlay Component
   const LoaderOverlay = () => {
@@ -127,10 +152,10 @@ const PhotoUploader = ({ onUploadSuccess }) => {
           <div className="flex flex-col items-center text-center">
             <Loader2 className="w-12 h-12 text-orange-600 animate-spin mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Uploading Photos
+              Uploading Files
             </h3>
             <p className="text-gray-600 text-sm">
-              Please wait while your photos are being uploaded...
+              Please wait while your files are being uploaded...
             </p>
             <div className="mt-4 w-full bg-gray-200 rounded-full h-2">
               <div
@@ -161,7 +186,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
           className="text-3xl font-bold text-gray-800 text-center mb-6"
           style={{ fontFamily: "'Lora', serif" }}
         >
-          Upload Your Photos
+          Upload Your Photos & Videos
         </h2>
         <div
           {...getRootProps()}
@@ -178,7 +203,8 @@ const PhotoUploader = ({ onUploadSuccess }) => {
               <p>Drop the files here ...</p>
             ) : (
               <p>
-                Drag &apos;n&apos; drop photos here, or click to select files
+                Drag &apos;n&apos; drop photos and videos here, or click to
+                select files
               </p>
             )}
           </div>
@@ -195,7 +221,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
         {files.length > 0 && (
           <div className="mt-6">
             <h3 className="font-semibold text-gray-700 mb-4">
-              Selected Photos:
+              Selected Files:
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {previews}
@@ -206,7 +232,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
                 disabled={uploading}
                 className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-orange-600 hover:bg-orange-700 transition duration-300 disabled:bg-gray-400"
               >
-                {uploading ? "Uploading..." : "Upload Photos"}
+                {uploading ? "Uploading..." : "Upload Files"}
               </button>
             </div>
           </div>

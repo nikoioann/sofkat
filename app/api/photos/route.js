@@ -15,15 +15,27 @@ const getCachedPhotos = unstable_cache(
     // Read all files from the uploads directory
     const files = await readdir(uploadsDir);
 
-    // Filter for image files only
-    const imageExtensions = [".jpg", ".jpeg", ".png", ".gif", ".webp", ".heic"];
-    const imageFiles = files.filter((file) => {
+    // Filter for image and video files
+    const mediaExtensions = [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".gif",
+      ".webp",
+      ".heic",
+      ".mp4",
+      ".mpeg",
+      ".mov",
+      ".avi",
+      ".webm",
+    ];
+    const mediaFiles = files.filter((file) => {
       const ext = file.toLowerCase().substring(file.lastIndexOf("."));
-      return imageExtensions.includes(ext);
+      return mediaExtensions.includes(ext);
     });
 
-    // Create URLs for each image
-    const photos = imageFiles.map((file) => `/uploads/${file}`);
+    // Create URLs for each media file
+    const photos = mediaFiles.map((file) => `/uploads/${file}`);
 
     return {
       photos,

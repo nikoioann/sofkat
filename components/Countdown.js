@@ -83,7 +83,7 @@ const Countdown = () => {
       ) : (
         <div className="text-center p-4">
           <div className="text-4xl md:text-6xl font-bold text-gray-800">
-            The Big Day is Here!
+            Thank you for celebrating with us
           </div>
         </div>
       )}

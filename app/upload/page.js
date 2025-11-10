@@ -23,18 +23,31 @@ const UploadPage = () => {
           {uploadedPhotos.length > 0 && (
             <div className="mt-8">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                Uploaded Photos:
+                Uploaded Files:
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {uploadedPhotos.map((url, index) => (
-                  <div key={index} className="relative aspect-square">
-                    <img
-                      src={url}
-                      alt={`Uploaded photo ${index + 1}`}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                ))}
+                {uploadedPhotos.map((url, index) => {
+                  const isVideo = url.toLowerCase().match(/\.(mp4|mpeg|mov|avi|webm)$/);
+                  return (
+                    <div key={index} className="relative aspect-square">
+                      {isVideo ? (
+                        <video
+                          src={url}
+                          className="w-full h-full object-cover rounded-lg"
+                          muted
+                          playsInline
+                          preload="metadata"
+                        />
+                      ) : (
+                        <img
+                          src={url}
+                          alt={`Uploaded file ${index + 1}`}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

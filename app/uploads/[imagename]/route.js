@@ -21,7 +21,7 @@ export async function GET(request, { params }) {
 
     // Check if file exists
     if (!existsSync(filePath)) {
-      return NextResponse.json({ error: "Image not found" }, { status: 404 });
+      return NextResponse.json({ error: "File not found" }, { status: 404 });
     }
 
     // Read the file
@@ -37,12 +37,17 @@ export async function GET(request, { params }) {
       webp: "image/webp",
       svg: "image/svg+xml",
       heic: "image/heic",
+      mp4: "video/mp4",
+      mpeg: "video/mpeg",
+      mov: "video/quicktime",
+      avi: "video/x-msvideo",
+      webm: "video/webm",
     };
 
     const contentType =
       contentTypeMap[extension || ""] || "application/octet-stream";
 
-    // Return the image with appropriate headers
+    // Return the media file with appropriate headers
     return new NextResponse(fileBuffer, {
       status: 200,
       headers: {
@@ -51,9 +56,9 @@ export async function GET(request, { params }) {
       },
     });
   } catch (error) {
-    console.error("Error serving image:", error);
+    console.error("Error serving file:", error);
     return NextResponse.json(
-      { error: "Failed to serve image" },
+      { error: "Failed to serve file" },
       { status: 500 }
     );
   }
