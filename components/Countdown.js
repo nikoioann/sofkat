@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 const Countdown = () => {
-  const WEDDING_DATE = new Date("2025-11-08T16:30:00");
+  const WEDDING_DATE = new Date("2026-05-23T16:30:00");
   const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

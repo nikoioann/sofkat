@@ -28,7 +28,7 @@ const HomePage = () => {
         <div
           className="absolute inset-0 bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/sk3.jpg')",
+            backgroundImage: "url('/giostel.png')",
             position: "absolute",
           }}
         ></div>
@@ -38,7 +38,7 @@ const HomePage = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
             style={{ fontFamily: "'Lora', serif', serif'" }}
           >
-            Σοφοκλής & Κατερίνα
+            Γιώργος & Στέλλα
           </h1>
           <div>
             <Countdown />
@@ -57,113 +57,110 @@ const HomePage = () => {
               Wedding Agenda
             </h2> */}
 
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
+            {/* <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
               <Link
                 href="/upload"
                 className="inline-block px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors duration-200 text-lg font-semibold"
               >
                 Ανεβαστε τις φωτογραφιες σας εδω
               </Link>
-            </div>
-            <div className="max-w-6xl mx-auto px-4">
-              <table className="w-full table-auto border-separate border-spacing-y-12">
-                <tbody>
-                  <tr>
-                    <td className="w-1/3 align-middle text-center h-72">
-                      {" "}
-                      <img
-                        src="/suit.png"
-                        alt="Location 1"
-                        className="rounded-lg w-full h-64 object-contain mx-auto" // object-contain ensures full image is visible
-                      />
-                    </td>
-                    <td className="align-middle text-center h-72 text-lg">
-                      <div className="mb-2 font-semibold">Αλλάματα γαμπρού</div>
-                      <div className="mb-2 text-gray-600">13:00</div>
-                      <a
-                        href="https://www.google.com/maps?saddr=My+Location&daddr=34.80609744262925,32.46040753160642"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        Διαδρομή
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-1/3 align-middle text-center h-72">
-                      <img
-                        src="/bribe.png"
-                        alt="Location 2"
-                        className="rounded-lg w-full h-64 object-contain mx-auto"
-                      />
-                    </td>
-                    <td className="align-middle text-center h-72 text-lg">
-                      <div className="mb-2 font-semibold">Στολίσματα νύφης</div>
-                      <div className="mb-2 text-gray-600">15:00</div>
-                      <a
-                        href="https://www.google.com/maps?saddr=My+Location&daddr=34.7451594299861,32.435311586797184"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        Διαδρομή
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-1/3 align-middle text-center h-72">
-                      <img
-                        src="/church.png"
-                        alt="Location 3"
-                        className="rounded-lg w-full h-64 object-contain mx-auto"
-                      />
-                    </td>
-                    <td className="align-middle text-center h-72 text-lg">
-                      <div className="mb-2 font-semibold">Εκκλησία</div>
-                      <div className="mb-2 text-gray-600">17:15</div>
-                      <a
-                        href="https://www.google.com/maps?saddr=My+Location&daddr=34.772853601394964,32.42051199309124"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        Διαδρομή
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-1/3 align-middle text-center h-72">
-                      <img
-                        src="/food.png"
-                        alt="Location 4"
-                        className="rounded-lg w-full h-64 object-contain mx-auto"
-                      />
-                    </td>
-                    <td className="align-middle text-center h-72 text-lg">
-                      <div className="mb-2 font-semibold">Δείπνο</div>
-                      <div className="mb-2 text-gray-600">20:00 </div>
-                      <a
-                        href="https://www.google.com/maps?saddr=My+Location&daddr=Aliathon+Resort,+Paphos"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        Διαδρομή
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            </div> */}
+            <div className="w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-16">
+                {/* Row 1, Col 1 */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full sm:w-auto">
+                  <img
+                    src="/suit.png"
+                    alt="Location 1"
+                    className="rounded-lg w-full sm:w-1/3 h-64 object-contain flex-shrink-0"
+                  />
+                  <div className="text-lg">
+                    <div className="mb-2 font-semibold">
+                      Αλλάματα <br /> γαμπρού
+                    </div>
+                    <div className="mb-2 text-gray-600">13:00</div>
+                    <a
+                      href="https://www.google.com/maps?saddr=My+Location&daddr=34.855473156415044,32.4578844004162"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 underline"
+                    >
+                      Διαδρομή
+                    </a>
+                  </div>
+                </div>
+                {/* Row 1, Col 2 */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full sm:w-auto">
+                  <img
+                    src="/bribe.png"
+                    alt="Location 2"
+                    className="rounded-lg w-full sm:w-1/3 h-64 object-contain flex-shrink-0"
+                  />
+                  <div className="text-lg">
+                    <div className="mb-2 font-semibold">
+                      Στολίσματα <br /> νύφης
+                    </div>
+                    <div className="mb-2 text-gray-600">15:00</div>
+                    <a
+                      href="https://www.google.com/maps?saddr=My+Location&daddr=34.855473156415044,32.4578844004162"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 underline"
+                    >
+                      Διαδρομή
+                    </a>
+                  </div>
+                </div>
+                {/* Row 2, Col 1 */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full sm:w-auto">
+                  <img
+                    src="/church.png"
+                    alt="Location 3"
+                    className="rounded-lg w-full sm:w-1/3 h-64 object-contain flex-shrink-0"
+                  />
+                  <div className="text-lg">
+                    <div className="mb-2 font-semibold">Εκκλησία</div>
+                    <div className="mb-2 text-gray-600">17:00</div>
+                    <a
+                      href="https://www.google.com/maps?saddr=My+Location&daddr=34.77654203385507,32.43444525313793"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 underline"
+                    >
+                      Διαδρομή
+                    </a>
+                  </div>
+                </div>
+                {/* Row 2, Col 2 */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full sm:w-auto">
+                  <img
+                    src="/food.png"
+                    alt="Location 4"
+                    className="rounded-lg w-full sm:w-1/3 h-64 object-contain flex-shrink-0"
+                  />
+                  <div className="text-lg">
+                    <div className="mb-2 font-semibold">Δείπνο</div>
+                    <div className="mb-2 text-gray-600">20:00</div>
+                    <a
+                      href="https://www.google.com/maps?saddr=My+Location&daddr=Monte+Liza,+Paphos"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 underline"
+                    >
+                      Διαδρομή
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 p-6 bg-gray-50 rounded-lg shadow-sm">
             <GoogleMapComponent />
           </div>
         </section>
 
         {/* RSVP Section */}
-        <section
+        {/* <section
           id="rsvp"
           className="py-20"
           style={{ backgroundColor: "#fdf8f5" }}
@@ -171,7 +168,7 @@ const HomePage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <RSVPForm />
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />
