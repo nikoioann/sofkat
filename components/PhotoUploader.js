@@ -23,12 +23,12 @@ const PhotoUploader = ({ onUploadSuccess }) => {
             "video/quicktime",
             "video/x-msvideo",
             "video/webm",
-          ].includes(file.type) && file.size <= 512 * 1024 * 1024 // 512MB limit
+          ].includes(file.type) && file.size <= 512 * 1024 * 1024, // 512MB limit
       )
       .map((file) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
-        })
+        }),
       );
     setFiles((prev) => [...prev, ...validFiles]);
     setError(null);
@@ -77,7 +77,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
         setSuccessMessage(
           `Successfully uploaded ${successfulUploads.length} file${
             successfulUploads.length === 1 ? "" : "s"
-          }`
+          }`,
         );
         setError(null); // Clear any previous errors
       }
@@ -86,7 +86,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
       const failedUploads = results.filter((res) => res.error);
       if (failedUploads.length > 0) {
         const fileTooLargeErrors = failedUploads.filter(
-          (res) => res.error === "File too large"
+          (res) => res.error === "File too large",
         );
 
         if (fileTooLargeErrors.length > 0) {
@@ -173,7 +173,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
     <>
       <LoaderOverlay />
       <div className="w-full max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-2xl">
-        <div className="flex justify-center mb-6">
+        {/* <div className="flex justify-center mb-6">
           <Image
             src="/logo.png"
             alt="Logo"
@@ -181,7 +181,7 @@ const PhotoUploader = ({ onUploadSuccess }) => {
             height={120}
             className="object-contain"
           />
-        </div>
+        </div> */}
         <h2
           className="text-3xl font-bold text-gray-800 text-center mb-6"
           style={{ fontFamily: "'Lora', serif" }}
