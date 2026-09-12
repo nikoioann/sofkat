@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import GoogleMapComponent from "@/components/GoogleMap";
 import { Clock, MapPin, Send } from "lucide-react";
 import Link from "next/link";
+import { asset } from "@/lib/basePath";
 
 const HomePage = () => {
   const [loaded, setLoaded] = useState(false);
@@ -28,7 +29,7 @@ const HomePage = () => {
         <div
           className="absolute inset-0 bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/sk3.jpg')",
+            backgroundImage: `url('${asset("/sk3.jpg")}')`,
             position: "absolute",
           }}
         ></div>
@@ -59,10 +60,10 @@ const HomePage = () => {
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
               <Link
-                href="/upload"
+                href="/photos"
                 className="inline-block px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors duration-200 text-lg font-semibold"
               >
-                Ανεβαστε τις φωτογραφιες σας εδω
+                Δειτε τις φωτογραφιες μας εδω
               </Link>
             </div>
             <div className="max-w-6xl mx-auto px-4">
@@ -72,7 +73,7 @@ const HomePage = () => {
                     <td className="w-1/3 align-middle text-center h-72">
                       {" "}
                       <img
-                        src="/suit.png"
+                        src={asset("/suit.png")}
                         alt="Location 1"
                         className="rounded-lg w-full h-64 object-contain mx-auto" // object-contain ensures full image is visible
                       />
@@ -93,7 +94,7 @@ const HomePage = () => {
                   <tr>
                     <td className="w-1/3 align-middle text-center h-72">
                       <img
-                        src="/bribe.png"
+                        src={asset("/bribe.png")}
                         alt="Location 2"
                         className="rounded-lg w-full h-64 object-contain mx-auto"
                       />
@@ -114,7 +115,7 @@ const HomePage = () => {
                   <tr>
                     <td className="w-1/3 align-middle text-center h-72">
                       <img
-                        src="/church.png"
+                        src={asset("/church.png")}
                         alt="Location 3"
                         className="rounded-lg w-full h-64 object-contain mx-auto"
                       />
@@ -135,7 +136,7 @@ const HomePage = () => {
                   <tr>
                     <td className="w-1/3 align-middle text-center h-72">
                       <img
-                        src="/food.png"
+                        src={asset("/food.png")}
                         alt="Location 4"
                         className="rounded-lg w-full h-64 object-contain mx-auto"
                       />

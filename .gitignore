@@ -40,6 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# uploaded files
-/public/uploads/*
-!/public/uploads/.gitkeep
+# album media: committed, since the static export reads this folder at build time
+!/public/uploads

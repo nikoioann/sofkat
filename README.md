@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sofoklis & Katerina
+
+Static wedding site built with [Next.js](https://nextjs.org), deployed to GitHub Pages
+at **https://nikoioann.github.io/sofkat**.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The dev server also runs under the `/sofkat` base path, so open
+[http://localhost:3000/sofkat](http://localhost:3000/sofkat).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Set `NEXT_PUBLIC_GOOGLE_MAP_API` in `.env` for the map to load.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Every push to `main` triggers `.github/workflows/deploy.yml`, which runs
+`npm run build` and publishes the exported `out/` directory to GitHub Pages.
 
-To learn more about Next.js, take a look at the following resources:
+One-time repository setup:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+2. **Settings → Secrets and variables → Actions →** add `NEXT_PUBLIC_GOOGLE_MAP_API`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To deploy by hand instead: `npm run deploy` (pushes `out/` to the `gh-pages` branch
+via the `gh-pages` package).
 
-## Deploy on Vercel
+### Static-site constraints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site is a full static export (`output: "export"`), so there is no server at
+runtime — no API routes, no server actions, no on-demand file writes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Base path.** The site lives at `/sofkat`. `next/link`, `next/image` and
+  `next/font` handle that prefix automatically; anything referenced by a plain
+  `<img>`, `<video>` or CSS `url()` must be wrapped in `asset()` from
+  `lib/basePath.js`. Serving from a domain root instead? Build with
+  `NEXT_PUBLIC_BASE_PATH=""`.
+- **The shared album is read-only.** `app/photos/page.js` lists whatever media is
+  committed under `public/uploads/` *at build time*. To add photos or videos,
+  commit the files to `public/uploads/` and push — the deploy workflow rebuilds
+  the gallery. Guest uploads would need a hosted backend (Cloudinary, S3, a
+  Google Form, etc.); they cannot run on GitHub Pages.

@@ -19,7 +19,7 @@ const PhotoGallery = ({ photos }) => {
       {photos.length === 0 ? (
         <div className="text-center text-gray-500">
           <LucideImage size={48} className="mx-auto mb-4" />
-          <p>No photos have been shared yet. Be the first to upload!</p>
+          <p>No photos have been shared yet.</p>
         </div>
       ) : (
         <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
