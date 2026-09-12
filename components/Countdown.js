@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 const Countdown = () => {
-  const WEDDING_DATE = new Date("2025-11-08T16:30:00");
+  const WEDDING_DATE = new Date("2026-11-08T16:30:00");
   const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -59,7 +59,7 @@ const Countdown = () => {
           <div className="text-4xl md:text-6xl font-bold text-gray-800">
             It&apos;s Wedding Day!
           </div>
-        </div>
+        </div>,
       );
       return;
     }
@@ -72,7 +72,7 @@ const Countdown = () => {
         <div className="text-sm uppercase tracking-wider text-gray-500">
           {interval}
         </div>
-      </div>
+      </div>,
     );
   });
 

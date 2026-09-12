@@ -41,6 +41,12 @@ const HomePage = () => {
           >
             Σοφοκλής & Κατερίνα
           </h1>
+          <h1
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            style={{ fontFamily: "'Lora', serif', serif'" }}
+          >
+            100 Χρονια ΑΠΟΕΛ
+          </h1>
           <div>
             <Countdown />
           </div>
